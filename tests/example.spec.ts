@@ -4,7 +4,7 @@ import path, { dirname } from "path";
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-const files = fs.readdirSync(__dirname + "/videos");
+const files = fs.readdirSync(path.join(__dirname, '..', 'videos/'));
 console.log(files);
 const pass:any = process.env.PASS;
 const email:any = process.env.EMAIL;
