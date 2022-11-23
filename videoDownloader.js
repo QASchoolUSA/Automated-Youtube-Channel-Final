@@ -22,7 +22,7 @@ const getListOfLinksFromTikTok = async () => {
         const idArr = [];
         let response = await api.public.posts({
             secUid: "MS4wLjABAAAATjb2XRpt183Q1Z1j1dCcOqjvuNMUA23aTkHq5GnZwebGJyHtGZLfqdc9uc0otHFm",
-            count: 3
+            count: 30
         });
         response.json.itemList.forEach((element) => {
             const newStr = "@" + element.author.uniqueId + "/video/" + element.id
@@ -105,7 +105,7 @@ const getIdVideo = (url) => {
     var listVideo = [];
     var listMedia = [];
     let urlInputs = await getListOfLinksFromTikTok();
-    for (let i = 0; i < urlInputs.length; i++) {
+    for (let i = 0; i < 3; i++) {
         const url = await getRedirectUrl(urlInputs[i]);
         listVideo.push(url);
     }

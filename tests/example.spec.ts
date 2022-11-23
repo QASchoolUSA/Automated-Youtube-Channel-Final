@@ -5,7 +5,6 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const files = fs.readdirSync(path.join(__dirname, '..', 'videos/'));
-console.log(files);
 const pass:any = process.env.PASS;
 const email:any = process.env.EMAIL;
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
