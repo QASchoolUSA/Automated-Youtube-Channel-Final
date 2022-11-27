@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import fs from "fs";
-import path, { dirname } from "path";
+import path from "path";
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -32,7 +32,7 @@ test.describe('Youtube Upload Scripts', () => {
     await page.goto('https://www.youtube.com/upload');
     await page.locator('input[name="Filedata"]').setInputFiles(files);
     await page.getByText('Загрузка завершена').waitFor();
-    await delay(30000);
+    await delay(5000);
   });
 
   test.afterAll(async () => {
