@@ -3,7 +3,6 @@ import fs from "fs";
 import path from "path";
 import * as dotenv from 'dotenv';
 import { downloadVideos } from '../videoDownloader';
-import { timeLog } from 'console';
 dotenv.config();
 
 
