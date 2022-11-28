@@ -95,9 +95,12 @@ const downloadMediaFromList = async (list) => {
 //         });
 // })();
 
+const shuffle = (array) => array.sort(() => Math.random() - 0.5);
+
 export async function downloadVideos() {
     const listMedia = new Array();
     const videoObjects = await videos.getVideosToPost();
+    shuffle(videoObjects)
 
     for (let i = 0; i < 1; i++) {
         var data = await getVideoNoWM(videoObjects[i].link);
