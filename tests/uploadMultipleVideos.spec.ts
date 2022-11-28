@@ -10,8 +10,8 @@ const email:any = process.env.EMAIL;
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
 
 
-test.describe('Youtube Upload Scripts', () => {
-  test('Youtube Auto Upload Videos', async ({ page }) => {
+test.describe('Youtube Upload Videos', () => {
+  test('Youtube Upload - Multiple Videos without entering video information.', async ({ page }) => {
     await page.goto('https://www.youtube.com/account/');
     files.forEach((element, index) => {
       files[index] = path.join(__dirname, '..', 'videos/') + element;

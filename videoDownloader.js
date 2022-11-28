@@ -77,20 +77,38 @@ const downloadMediaFromList = async (list) => {
     });
 }
 
-(async () => {
+// (async () => {
+//     const listMedia = new Array();
+//     let urlInputs = await videos.getVideosToPost();
+
+//     for (let i = 0; i < 1; i++) {
+//         var data = await getVideoNoWM(urlInputs[i].link);
+//         listMedia.push(data);
+//     }
+
+//     downloadMediaFromList(listMedia)
+//         .then(() => {
+//             console.log(chalk.green("[+] Downloaded successfully"));
+//         })
+//         .catch(err => {
+//             console.log(chalk.red("[X] Error: " + err));
+//         });
+// })();
+
+export async function downloadVideos() {
     const listMedia = new Array();
-    let urlInputs = await videos.getVideosToPost();
+    const videoObjects = await videos.getVideosToPost();
 
     for (let i = 0; i < 1; i++) {
-        var data = await getVideoNoWM(urlInputs[i].link);
+        var data = await getVideoNoWM(videoObjects[i].link);
         listMedia.push(data);
     }
-
     downloadMediaFromList(listMedia)
-        .then(() => {
-            console.log(chalk.green("[+] Downloaded successfully"));
-        })
-        .catch(err => {
-            console.log(chalk.red("[X] Error: " + err));
-        });
-})();
+    .then(() => {
+        console.log(chalk.green("[+] Downloaded successfully"));
+    })
+    .catch(err => {
+        console.log(chalk.red("[X] Error: " + err));
+    });
+    return videoObjects;
+}
