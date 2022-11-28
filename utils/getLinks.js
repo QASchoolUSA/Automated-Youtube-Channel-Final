@@ -56,7 +56,7 @@ const getVideosToPost = async (count = 10) => {
             log(chalk.yellow.underline(video.link))
         })
         log(chalk.green(`Received Videos Links: ` + objectArr.length));
-        return objectArr
+        return shuffle(objectArr);
     }
     catch (err) {
         console.log(err?.statusCode, err?.message, err?.json)

@@ -39,9 +39,7 @@ test.describe('Youtube Upload Videos', () => {
     await channelLink.click();
     await page.goto('https://www.youtube.com/upload');
     await delay(10000);
-    console.log(files);
     await page.locator('input[name="Filedata"]').setInputFiles(files);
-    test.slow();
     const title = page.locator('(//ytcp-social-suggestion-input)[1]/div')
     await title.waitFor();
     if (videoObjects[0].desc.includes(">")) {
