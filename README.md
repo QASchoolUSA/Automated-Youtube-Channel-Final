@@ -13,7 +13,7 @@ The repo is created to set up Automated Youtube Channel, you take videos from Ti
 - TikTok-Video-Downloader
 
 
-
-# Instructions on How to get started
+# Instructions on how to get started
 - Install Node.JS, clone repoa and execute `npm i`
-- Create .env file on you machine - add there EMAIL, PASS and USERNAME_LIST.
+- Create .env file on you machine in root directory - add there EMAIL, PASS and USERNAME_LIST.
+- Execute the script using `node tests/uploadVideo.js`.
