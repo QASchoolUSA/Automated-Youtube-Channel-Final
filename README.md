@@ -11,3 +11,9 @@ The repo is created to set up Automated Youtube Channel, you take videos from Ti
 - Dotenv
 - Node-cron
 - TikTok-Video-Downloader
+
+
+
+# Instructions on How to get started
+- Install Node.JS, clone repoa and execute `npm i`
+- Create .env file on you machine - add there EMAIL, PASS and USERNAME_LIST.
