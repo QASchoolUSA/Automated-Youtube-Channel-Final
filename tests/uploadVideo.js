@@ -11,9 +11,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 async function downloadingVideos() {
-  const videos = fs.readdirSync(path.join(__dirname, "..", "videos/"), {
-    withFileTypes: true
-  });
+  const videos = fs.readdirSync(path.join(__dirname, "..", "videos/"));
   console.log(videos);
   if (videos.length === 0) {
     await downloadVideos();
