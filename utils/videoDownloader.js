@@ -1,8 +1,7 @@
 const axios = require("axios");
 const fs = require("fs");
-const downloadLinks = require("./getVideoLinksFromUser");
+const getDownloadLinks = require("./getVideoLinksFromUser");
 const { faker } = require("@faker-js/faker");
-
 
 /*
 * Function to download video 
@@ -19,10 +18,10 @@ const downloadVideo = (url, fileName) => {
 };
 
 /*
-* Used for Downloading Videos from Downloaded Links.
+* Used for Downloading Videos from provided links.
 */
 module.exports = async function downloadVideos() {
-  const URLs = await downloadLinks();
+  const URLs = await getDownloadLinks();
   URLs.forEach((url) => {
     downloadVideo(url, "./videos/" + faker.random.word() + ".mp4");
   });

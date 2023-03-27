@@ -11,7 +11,7 @@ Array.prototype.random = function () {
 const arr = process.env.USERNAME_LIST.split(",");
 const user = arr.random();
 
-async function getVideos() {
+async function getVideoLinks() {
   // Launch Browser sesssion
   const browser = await puppeteer.launch({ headless: false });
 
@@ -21,28 +21,29 @@ async function getVideos() {
   await page.goto(urlPath);
 
   // Scrolling to get more links from USER's profile
-  for (let i = 0; i <= 5; i++) {
-    await page.keyboard.down("End");
-    await page.waitForTimeout(3000);
-  }
+  // for (let i = 0; i <= 2; i++) {
+  //   await page.keyboard.down("End");
+  //   await page.waitForTimeout(3000);
+  // }
 
   // Executing JQuery to get the video links from user's TikTok profile
   const videoLinks = await page.evaluate(() => {
-    const elements = Array.from(document.querySelectorAll('[href*="/video/"]'));
-    const links = elements.map((element) => {
-      return element.href;
-    });
-    return links;
+    const arrayOfLinks = Array.from(document.querySelectorAll('[href*="/video/"]'));
+//    const links = elements.map((element) => {
+//      return element.href;
+//    });
+    return arrayOfLinks.map(element => element.href)
   });
 
   // Closing browser session
   await browser.close();
+  console.log(videoLinks)
   return videoLinks;
 }
 
 module.exports = async function getDownloadLinks() {
   const arrLinks = [];
-  let links = await getVideos();
+  const links = await getVideoLinks();
   for (let i = 0; i < links.length; i++) {
     let oneLink = await ttdl.getInfo(links[i]);
     arrLinks.push(oneLink.video.url.no_wm);
@@ -51,4 +52,4 @@ module.exports = async function getDownloadLinks() {
   console.log(arrLinks);
 
   return arrLinks;
-};
+}

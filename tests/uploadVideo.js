@@ -1,4 +1,4 @@
-var cron = require('node-cron');
+let cron = require('node-cron');
 const puppeteer = require("puppeteer-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 const fs = require("fs");
@@ -101,8 +101,10 @@ async function uploadVideo() {
 
 
 
-var task = cron.schedule('*/10 * * * *', async () => {
-  await uploadVideo();
-});
+// var task = cron.schedule('* * * * *', async () => {
+//   await uploadVideo();
+// });
 
-task.start()
+// task.start()
+
+uploadVideo();
