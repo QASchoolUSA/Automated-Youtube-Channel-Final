@@ -1,4 +1,3 @@
-let cron = require('node-cron');
 const puppeteer = require("puppeteer-extra");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 const fs = require("fs");
@@ -77,21 +76,21 @@ async function uploadVideo() {
 
   await page.goto("https://www.youtube.com/upload");
   await page.waitForTimeout(3000);
-
   const fileUpload = await page.waitForSelector('input[name="Filedata"]');
   await fileUpload.uploadFile("videos/" + videoToUpload);
-
+  await page.waitForTimeout(3000);
   const notForKidsRadioBtn = await page.waitForXPath(
     '//*[@name="VIDEO_MADE_FOR_KIDS_NOT_MFK"]'
   );
+  await page.waitForTimeout(3000);
   await notForKidsRadioBtn.click();
   const nextButton = await page.waitForSelector("#next-button");
   await nextButton.click();
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(5000);
   await nextButton.click();
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(5000);
   await nextButton.click();
-  await page.waitForTimeout(2000);
+  await page.waitForTimeout(5000);
   const publicRadioBtn = await page.waitForXPath('//*[@name="PUBLIC"]');
   await publicRadioBtn.click();
   const publishBtn = await page.waitForSelector("#done-button");
@@ -105,13 +104,5 @@ async function uploadVideo() {
 
   log(chalk.green("Done..."));
 }
-
-
-
-// var task = cron.schedule('* * * * *', async () => {
-//   await uploadVideo();
-// });
-
-// task.start()
 
 uploadVideo();
