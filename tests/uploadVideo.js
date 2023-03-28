@@ -24,7 +24,7 @@ async function downloadingVideos() {
 
   } else {
 
-    log(chalk.green(`ideo Files Found - ${videos.length} files`))
+    log(chalk.green(`Video Files Found - ${videos.length} files`))
     
     return videos[0];
 
