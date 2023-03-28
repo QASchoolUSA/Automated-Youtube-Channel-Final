@@ -12,15 +12,22 @@ dotenv.config();
 
 async function downloadingVideos() {
   const videos = fs.readdirSync(path.join(__dirname, "..", "videos/"));
-  console.log(videos);
+
   if (videos.length === 0) {
+    log(chalk.green(`Video Files not found...`))
     await downloadVideos();
     const downloadedVideos = fs.readdirSync(
       path.join(__dirname, "..", "videos/")
     );
+
     return downloadedVideos[0];
+
   } else {
+
+    log(chalk.green(`ideo Files Found - ${videos.length} files`))
+    
     return videos[0];
+
   }
 }
 
