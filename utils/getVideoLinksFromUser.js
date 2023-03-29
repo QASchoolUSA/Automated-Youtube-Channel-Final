@@ -52,4 +52,4 @@ module.exports = async function getDownloadLinks() {
   console.log(arrLinks);
 
   return arrLinks;
-}
+};

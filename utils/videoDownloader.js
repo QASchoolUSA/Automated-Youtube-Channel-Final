@@ -20,8 +20,8 @@ const downloadVideo = (url, fileName) => {
 /*
 * Used for Downloading Videos from provided links.
 */
-module.exports = async function downloadVideos() {
-  const URLs = await getDownloadLinks();
+async function downloadVideos() {
+  const URLs = await downloadLinks();
   URLs.forEach((url) => {
     downloadVideo(url, "./videos/" + faker.random.word() + ".mp4");
   });
