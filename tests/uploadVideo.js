@@ -35,9 +35,13 @@ async function uploadVideo() {
   const email = process.env.EMAIL;
   log(chalk.green("Running script..."));
 
-  const videoToUpload = await downloadingVideos();
+  //const videoToUpload = await downloadingVideos();
   // Opening Browser
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: false,
+    args: [
+      `--user-data-dir=${'/Users/kedrovnick/Library/Application Support/Google/Chrome'}`,
+      '--profile-directory=Default'
+    ], });
 
   // Opening a New tab
   const page = await browser.newPage();
@@ -46,7 +50,8 @@ async function uploadVideo() {
   await page.goto("https://www.youtube.com/account/");
 
   // Timeout
-  await page.waitForTimeout(3000);
+  await page.waitForNavigation()
+  await page.waitForTimeout(30000);
 
   // Email Input
   const emailInput = await page.waitForSelector("input[type=email]");
